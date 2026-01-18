@@ -1,0 +1,40 @@
+# gh-repolint configuration
+# See https://github.com/sethrylan/gh-repolint for documentation
+
+checks:
+  settings:
+    issues: false
+    wiki: false
+    projects: false
+    allow_actions_to_approve_prs: true
+    default_branch: "main"
+    merge:
+      allow_merge_commit: false
+      allow_squash_merge: true
+      allow_rebase_merge: false
+      allow_auto_merge: true
+      delete_branch_on_merge: true
+    dependabot:
+      alerts: true
+      security_updates: true
+
+  actions:
+    require_pinned_versions: true
+    require_timeout: false
+    require_minimal_permissions: true
+
+  rulesets:
+    - name: "main"
+      reference: "sethrylan/sethrylan/.repolint/ruleset.json"
+
+  files:
+    - name: ".github/dependabot.yml"
+      reference: "sethrylan/sethrylan/.repolint/go-dependabot.yml"
+    - name: ".github/workflows/ci.yml"
+      reference: "sethrylan/sethrylan/.repolint/workflows/ci.yml"
+    - name: ".github/workflows/conventional-commits.yml"
+      reference: "sethrylan/sethrylan/.repolint/workflows/conventional-commits.yml"
+    - name: "LICENSE"
+      reference: "sethrylan/sethrylan/.repolint/LICENSE"
+    - name: ".golangci.yml"
+      reference: "sethrylan/sethrylan/.repolint/.golangci.yml"
