@@ -8,7 +8,7 @@ checks:
     projects: false
     allow_actions_to_approve_prs: true
     default_branch: "main"
-    pull_request_creation_policy: "collaborators"
+    pull_request_creation_policy: "collaborators_only"
     merge:
       allow_merge_commit: false
       allow_squash_merge: true
