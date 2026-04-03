@@ -1,0 +1,28 @@
+name: PR Digest
+
+on:
+  schedule:
+    - cron: '0 14 * * 1-5' # weekdays at 14:00 UTC
+
+  workflow_dispatch:
+
+jobs:
+  pr-digest:
+    runs-on: ubuntu-latest
+    steps:
+      - id: month
+        run: |
+          echo "month=$(date -u '+%B %Y')" >> "$GITHUB_OUTPUT"
+
+      - uses: sethrylan/issue-digest@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.DIGEST_TOKEN }}
+        with:
+          query: 'is:pr is:open user:sethrylan -author:sethrylan'
+          title: 'PR Digest for ${{ steps.month.outputs.month }}'
+          intro: |
+            🤖 Monthly digest of open PRs across [sethrylan](https://github.com/sethrylan) repos (excluding PRs opened by @sethrylan).
+            A new comment is added each weekday.
+          comment: |
+            Open PRs as of today
+          discussionCategory: General
