@@ -44,6 +44,8 @@ linters:
     - wrapcheck         # Wrapping all errors is overkill
     - wsl               # Whitespace linter is too opinionated (deprecated)
     - wsl_v5            # Whitespace linter is too opinionated
+    # Deprecated linters (replaced by newer versions enabled via default: all)
+    - gomodguard        # Deprecated since v2.12.0, replaced by gomodguard_v2
 
   settings:
     usetesting:
@@ -111,6 +113,7 @@ linters:
         linters:
           - gosec
           - errcheck
+          - goconst
 
       # Allow dot imports in tests for testify
       - path: _test\.go
