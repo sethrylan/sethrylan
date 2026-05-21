@@ -21,6 +21,7 @@ linters:
     - forbidigo         # Requires explicit config for forbidden patterns
     - funcorder         # Function ordering is subjective
     - funlen            # Arbitrary function length limits
+    - goconst           # Repeated string detection is too noisy
     - gochecknoglobals  # Globals are sometimes fine
     - gochecknoinits    # init() is sometimes appropriate
     - gocognit          # Cognitive complexity is subjective
